@@ -14,9 +14,9 @@
 ;;; Commentary:
 
 ;; The commands `fabric-run-command X`  runs
-;; `vagrant X` in the shell. An exception is vagrant-edit, which will
-;; open the Vagrantfile for editing.
-;; Thanks to Tox.el for the inspiration.
+;; `fabric X` in the shell.
+;; An exception is vagrant-edit, which will open the Fabric file
+;; 'fabfile.py' for editing.
 
 ;;; License:
 
@@ -40,9 +40,9 @@
 
 (defvar fabric-program "/usr/local/bin/fab" "Fabric binary path.")
 
-(defvar fabric-default-task "-l" "Default task for Fabric")
+(defvar fabric-default-task "-l" "Default task for Fabric.")
 
-(defvar fabric-help-task "-h" "Help task for Fabric")
+(defvar fabric-help-task "-h" "Help task for Fabric.")
 
 
 ;;; Utils
@@ -55,12 +55,14 @@
 
 
 (defun fabric-make-command (cmd)
-  "Return the Fabric command."
+  "Return the Fabric command.
+CMD is the Fabric task."
   (concat fabric-program " -f " (fabric-get-root-directory) " " cmd))
 
 
 (defun fabric-command (cmd)
-  "Run the Fabric command."
+  "Run the Fabric command.
+CMD is the Unix shell command to execute"
   ;;(compile cmd))
   (async-shell-command cmd "*Fabric*"))
 
@@ -69,23 +71,31 @@
 
 ;;;###autoload
 (defun fabric-list-commands ()
-  "List of all fabric commands for project as strings"
+  "List of all fabric commands for project as strings."
   (interactive)
   (fabric-command (fabric-make-command fabric-default-task)))
 
 
 ;;;###autoload
 (defun fabric-help ()
-  "Display Fabric help"
+  "Display Fabric help."
   (interactive)
   (fabric-command (fabric-make-command fabric-help-task)))
 
 
 ;;;###autoload
 (defun fabric-run-command (name)
-  "Run a Fabric command specified in a fabfile."
-  (interactive "P")
+  "Run a Fabric command specified in a fabfile.
+NAME is the Fabric task to execute."
+  (interactive "sEnter Fabric task:")
   (fabric-command (fabric-make-command name)))
+
+
+;;;###autoload
+(defun fabric-edit ()
+  "Edit the Fabric file."
+  (interactive)
+  (find-file (fabric-get-root-directory)))
 
 
 ;;; End
