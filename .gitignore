@@ -1,10 +1,4 @@
-*.DS_Store
-*.pyc
-*.swo
-*.swp
 *~
-.tox
-.venv
-.projectile
-.cask/
-elpa/
+elpa
+*.pyc
+*.elc
