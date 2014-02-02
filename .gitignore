@@ -6,3 +6,5 @@
 .tox
 .venv
 .projectile
+.cask/
+elpa/

@@ -36,7 +36,7 @@ management. Install it and retrieve dependencies :
 
 * Launch unit tests :
 
-    $ make clean test
+        $ make clean test
 
 ## Changelog
 
