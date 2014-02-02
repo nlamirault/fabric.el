@@ -26,6 +26,7 @@ virtual-test :
 clean :
 	rm -f $(OBJECTS)
 	rm -rf elpa
+	rm -rf *.pyc
 
 reset : clean
 	rm -rf .cask # Clean packages installed for development
