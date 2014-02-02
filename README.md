@@ -1,4 +1,6 @@
 fabric.el
 =========
 
-Emacs mode to Fabric.
+Manage the Fabric tasks from Emacs.
+
+This package lets you send commands to Fabric.

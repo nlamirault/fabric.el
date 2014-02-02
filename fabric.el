@@ -4,7 +4,7 @@
 
 ;; Author: Nicolas Lamirault <nicolas.lamirault@chmouel.com>
 ;; Homepage: https://github.com/nlamirault/fabric.el
-;; Version: 0.1
+;; Version: 0.1.O
 ;; Keywords: python, fabric
 
 ;;; Installation:
@@ -13,6 +13,9 @@
 
 ;;; Commentary:
 
+;; The commands `fabric-run-command X`  runs
+;; `vagrant X` in the shell. An exception is vagrant-edit, which will
+;; open the Vagrantfile for editing.
 ;; Thanks to Tox.el for the inspiration.
 
 ;;; License:
@@ -46,8 +49,7 @@
 
 
 (defun fabric-get-root-directory ()
-  "Return the root directory of the Fabric file."
-  (interactive "P")
+  "Return the complete path of the Fabric file."
   (concat (locate-dominating-file (buffer-file-name) "fabfile.py")
 	  "fabfile.py"))
 
@@ -57,9 +59,10 @@
   (concat fabric-program " -f " (fabric-get-root-directory) " " cmd))
 
 
-(defun fabric-run (cmd)
+(defun fabric-command (cmd)
   "Run the Fabric command."
-  (compile cmd))
+  ;;(compile cmd))
+  (async-shell-command cmd "*Fabric*"))
 
 
 ;;; API
@@ -68,21 +71,21 @@
 (defun fabric-list-commands ()
   "List of all fabric commands for project as strings"
   (interactive)
-  (fabric-run (fabric-make-command fabric-default-task)))
+  (fabric-command (fabric-make-command fabric-default-task)))
 
 
 ;;;###autoload
 (defun fabric-help ()
   "Display Fabric help"
   (interactive)
-  (fabric-run (fabric-make-command fabric-help-task)))
+  (fabric-command (fabric-make-command fabric-help-task)))
 
 
 ;;;###autoload
 (defun fabric-run-command (name)
   "Run a Fabric command specified in a fabfile."
   (interactive "P")
-  (fabric-run (fabric-make-command name)))
+  (fabric-command (fabric-make-command name)))
 
 
 ;;; End
