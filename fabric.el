@@ -67,14 +67,14 @@
 ;;;###autoload
 (defun fabric-list-commands ()
   "List of all fabric commands for project as strings"
-  (interactive "P")
+  (interactive)
   (fabric-run (fabric-make-command fabric-default-task)))
 
 
 ;;;###autoload
 (defun fabric-help ()
   "Display Fabric help"
-  (interactive "P")
+  (interactive)
   (fabric-run (fabric-make-command fabric-help-task)))
 
 
