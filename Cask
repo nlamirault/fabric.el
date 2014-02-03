@@ -10,8 +10,8 @@
 (package "fabric.el" "0.1.0" "Manage Fabric file")
 
 ;; Basic libraries
-;;(depends-on "s")
-;;(depends-on "dash")
+(depends-on "s")
+(depends-on "dash")
 
 ;; Utilities
 (depends-on "pkg-info")
@@ -19,5 +19,6 @@
 ;; Unit tests
 (development
  (depends-on "f")
+ (depends-on "cl-lib")
  (depends-on "ert")
  (depends-on "ert-runner"))
