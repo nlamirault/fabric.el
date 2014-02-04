@@ -10,7 +10,7 @@
   "Path to root.")
 
 (defvar fabric-vendor-path
-  (f-expand "vendor" commander-root-path)
+  (f-expand "vendor" fabric-root-path)
   "Path to vendor.")
 
 (unless (require 'ert nil 'noerror)
