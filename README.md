@@ -1,6 +1,8 @@
 fabric.el
 =========
 
+[![Build Status](https://api.travis-ci.org/nlamirault/fabric.el.png?branch=master)](http://travis-ci.org/nlamirault/fabric.el)
+
 Manage the Fabric tasks from Emacs.
 
 ## Installation
