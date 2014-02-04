@@ -7,7 +7,9 @@ Manage the Fabric tasks from Emacs.
 
 ## Installation
 
-The recommended way to install ``fabric.el`` is via [MELPA](http://melpa.milkbox.net/)
+The recommended way to install ``fabric.el`` is via [MELPA](http://melpa.milkbox.net/):
+
+    M-x package-install fabric.el
 
 
 ## Usage
