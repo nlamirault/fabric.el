@@ -17,6 +17,10 @@ build : elpa $(OBJECTS)
 test : build
 	${CASK} exec ert-runner --no-win
 
+.PHONY: ci
+ci : build
+	${CASK} exec ert-runner --no-win < /dev/tty
+
 .PHONY: virtual-test
 virtual-test :
 	$(VAGRANT) up
