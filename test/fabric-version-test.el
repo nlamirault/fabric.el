@@ -38,7 +38,7 @@
     ;;(message "CS mode : %s" lib-version)
     (message "CS Cask version: %s" cask-version)
     ;;(should (string= version (fabric-mode-library-version)))))
-    (should (string= "0.1.0" cask-version))))
+    (should (string= "0.2.0" cask-version))))
 
 
 

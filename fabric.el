@@ -4,7 +4,7 @@
 
 ;; Author: Nicolas Lamirault <nicolas.lamirault@chmouel.com>
 ;; Homepage: https://github.com/nlamirault/fabric.el
-;; Version: 0.1.O
+;; Version: 0.2.O
 ;; Keywords: python, fabric
 
 ;;; Installation:
