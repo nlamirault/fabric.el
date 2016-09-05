@@ -38,7 +38,7 @@
 ;;; Code:
 
 
-(defvar fabric-program "/usr/local/bin/fab" "Fabric binary path.")
+(defvar fabric-program "/usr/bin/env fab" "Fabric binary path.")
 
 (defvar fabric-default-task "-l" "Default task for Fabric.")
 
