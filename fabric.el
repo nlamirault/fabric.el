@@ -67,6 +67,11 @@ CMD is the Unix shell command to execute"
   (async-shell-command cmd "*Fabric*"))
 
 
+(defun fabric-list-commands-list ()
+  "Return list of all fabric commands for project."
+  (split-string (shell-command-to-string (fabric-make-command "--shortlist"))))
+
+
 ;;; API
 
 ;;;###autoload
@@ -87,7 +92,8 @@ CMD is the Unix shell command to execute"
 (defun fabric-run-command (name)
   "Run a Fabric command specified in a fabfile.
 NAME is the Fabric task to execute."
-  (interactive "sEnter Fabric task:")
+  (interactive
+   (list (completing-read "Enter Fabric task: " (fabric-list-commands-list))))
   (fabric-command (fabric-make-command name)))
 
 
