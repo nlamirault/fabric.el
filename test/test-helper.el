@@ -42,8 +42,4 @@
 (message "Load Fabric : %s" fabric-source-dir)
 (load (s-concat fabric-source-dir "/fabric"))
 
-
-
-(provide 'test-helper)
-
 ;;; test-helper.el ends here

@@ -27,8 +27,6 @@
 ;;; Code:
 
 
-(require 'test-helper)
-
 (ert-deftest fabric-mode-library-version ()
   :expected-result (if (executable-find "cask") :passed :failed)
   ;;  The default directory must end with a slash
