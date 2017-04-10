@@ -40,7 +40,7 @@
 (message "Running tests on Emacs %s" emacs-version)
 
 (message "Load Fabric : %s" fabric-source-dir)
-(load (s-concat fabric-source-dir "/fabric.elc"))
+(load (s-concat fabric-source-dir "/fabric"))
 
 
 
