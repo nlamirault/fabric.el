@@ -36,6 +36,7 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ;;; Code:
+(require 'compile)
 
 
 (defvar fabric-program "/usr/bin/env fab" "Fabric binary path.")
@@ -46,6 +47,18 @@
 
 
 ;;; Utils
+
+
+(defun fabric-ansi-color-filter ()
+  "Handle match highlighting escape sequences.
+
+This function is called from `compilation-filter-hook'."
+  (ansi-color-apply-on-region compilation-filter-start (point)))
+
+
+(define-compilation-mode fabric-command-mode "*Fabric*"
+  "Mode for running fabric commands."
+  (add-hook 'compilation-filter-hook 'fabric-ansi-color-filter nil t))
 
 
 (defun fabric-get-root-directory ()
@@ -63,8 +76,7 @@ CMD is the Fabric task."
 (defun fabric-command (cmd)
   "Run the Fabric command.
 CMD is the Unix shell command to execute"
-  ;;(compile cmd))
-  (async-shell-command cmd "*Fabric*"))
+  (compilation-start cmd #'fabric-command-mode))
 
 
 (defun fabric-list-commands-list ()
